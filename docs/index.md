@@ -1,11 +1,17 @@
-# Obsidian Notes
+# My Tech Journey
 
-Publish your public notes with MkDocs
+The tech space is ever changing and evolving. I love learning and trying new things in this space. This repo is my notes as I learn about new things.
 
-## Hello World!
+  
 
-The `index.md` in the `/docs` folder is the homepage you see here.
+## Why?
 
-The folders in `/docs` appear as the main sections on the navigation bar.
+Things distract me easily. The purpose of this repo is to stabilize my explorations and learnings. I plan on documenting my experience and what I learn.
 
-The notes appear as pages within these sections. For example, [[Note 1]] in `Topic 1`
+  
+
+## My Setup
+
+This repo is a placeholder for an [Obsidian Vault](https://obsidian.md). I love Obsidian. It is not open source (at the moment) but the best thing out there (better than Roam).
+
+I am using Github Actions to publish a website of everything in the docs subdirectory.  Based on [this template](https://github.com/jobindj/obsidian-publish-mkdocs).

@@ -5,9 +5,9 @@ theme:
     palette:
 
     # Light mode
-    - media: "(prefers-color-scheme: light)"
+    - media: "(prefers-color-scheme: dark)"
       scheme: default
-      primary: yellow
+      primary: orange
       accent: blue
       toggle:
         icon: material/toggle-switch-off-outline
@@ -16,7 +16,7 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: yellow
+      primary: orange
       accent: blue
       toggle:
         icon: material/toggle-switch

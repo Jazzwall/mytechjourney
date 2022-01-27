@@ -1,4 +1,4 @@
-# My Tech Journey
+# Home - My Tech Journey
 
 The tech space is ever changing and evolving. I love learning and trying new things in this space. This repo is my notes as I learn about new things.
 

@@ -15,3 +15,6 @@ Things distract me easily. The purpose of this repo is to stabilize my explorati
 This repo is a placeholder for an [Obsidian Vault](https://obsidian.md). I love Obsidian. It is not open source (at the moment) but the best thing out there (better than Roam).
 
 I am using Github Actions to publish a website of everything in the docs subdirectory.  Based on [this template](https://github.com/jobindj/obsidian-publish-mkdocs).
+
+## Starting The Journey
+I will start the journey with [[dockerbasics|Docker Basics]]

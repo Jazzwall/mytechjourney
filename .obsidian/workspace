@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "be2c71a029e15783",
+    "type": "split",
+    "children": [
+      {
+        "id": "58eb4ff28f512c29",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "docs/index.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5bcbc3acdb755f31",
+    "type": "split",
+    "children": [
+      {
+        "id": "50cb32e0265285ee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fe5bb29976c1d414",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "49816a91adeaec1c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8a1c216216fd119f",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e66263c726b2c91",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72569f66ec33852a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "58eb4ff28f512c29",
+  "lastOpenFiles": [
+    "docs/index.md",
+    "docs/dockerbasics.md",
+    "README.md",
+    "Untitled 1.md",
+    "docs/Topic 1/Note 1.md",
+    "2021-11-22-22-49-26.png",
+    "2021-11-22-22-52-49.png"
+  ]
+}

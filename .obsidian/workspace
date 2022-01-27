@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/index.md",
+            "file": "docs/dockerbasics.md",
             "mode": "source"
           }
         }
@@ -52,7 +52,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "8a1c216216fd119f",
@@ -68,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/dockerbasics.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -88,8 +89,8 @@
   },
   "active": "58eb4ff28f512c29",
   "lastOpenFiles": [
-    "docs/index.md",
     "docs/dockerbasics.md",
+    "docs/index.md",
     "README.md",
     "Untitled 1.md",
     "docs/Topic 1/Note 1.md",

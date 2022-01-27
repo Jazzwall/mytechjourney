@@ -33,3 +33,13 @@ Here are the explicit steps:
 Docker's `run` command will pull the image (latest version, unless specified) from Dockerhub, create a container based on that image, and then start it.  Many tutorials out there (in)conveniently forget to mention this when they say talk about the run comand and only the run command.  To do the explicit steps above all in one line:
 `docker run -dp 6001:6379 --name redis-demo redis:4.0`
 The -d command is for running in detached mode.  That is, the command will spin off the running of the container but then return so you can use that command line again.
+
+#### Looking at logs
+`docker logs redis-demo`
+
+#### Running a command inside (including bash terminal)
+- For running pwd (present working dir) command inside docker
+`docker exec -it redis-demo pwd`
+- For running an interactive bash terminal
+`docker exec -it redis-demo /bin/bash`
+

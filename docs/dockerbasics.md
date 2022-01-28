@@ -43,3 +43,73 @@ The -d command is for running in detached mode.  That is, the command will spin 
 - For running an interactive bash terminal
 `docker exec -it redis-demo /bin/bash`
 
+#### Docker Network
+Docker allows for the creation of an isolated network that you can place your containers in.  This way they can talk to each other using the container names without having to expose specific ports through the host machine.  Docker comes with a default set of networks.  
+
+You can list existing networks using:
+`docker network ls`
+
+You can create a new network using:
+`docker network create demo-network`
+
+TODO: This section could be expanded...
+
+### A Simple Project
+#### How Docker Plays a Role
+Let's say there is a simple dev workflow for building a JavaScript application that uses MongoDB as it's database.  Where would docker show up in this setup?
+1) On the dev machine, we could use a MongoDB container (and a MongoExpress container for a nice GUI to manage MongoDb).
+2) On the dev machine, we could use a Docker container as our development environtment and use VS Code and it's Docker Remote plugin to develop directly in the container.
+3) A code commit/push to a remote repository could trigger a Jenkins / Github Actions workflow that builds the JS app and pushes it to a private Docker repository.
+4) The staging server pulls and deploys the app's Docker image.
+5) The staging server pulls and deploys the MongoDB image from Docker Hub.
+
+#### Steps
+1) Create Docker network: 
+`docker network create demo-network`
+2) Create a mongodb container with port 27017 exposed with a username and password using environment variables. 
+	```docker
+	docker run -dp 27017:27017 --name mymongo --network demo-network \
+	> -e MONGO_INITDB_ROOT_USERNAME=admin \
+	> -e MONGO_INITDB_ROOT_PASSWORD=password \
+	> mongo
+	```
+3) Create a mongo-express container with the right environtment variables so that it connects to the mongo instance
+	```docker
+	docker run -dp 8081:8081 \
+	> -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+	> -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+	> --network demo-network \
+	> --name mymongoexpress \
+	> -e ME_CONFIG_MONGODB_SERVER=mymongo \
+	> mongo-express
+	```
+
+
+
+### Case for Docker Compose
+Creating multiple related containers separately (like above) could get tedious and error prone.  And so, we have Docker Compose that makes it possible to configure and run multiple Docker containers much easier: Docker Compose.  With this tool you create a declarative yaml file that contains the parameters you would have specified in Docker run command in a structured way.
+
+Docker Compose by default takes care of creating a common network.
+
+Here is the yaml file describing the above two containers:
+```yaml
+version: '3'
+
+services:
+  mymongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+  mymongoexpress:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mymongo
+```
+

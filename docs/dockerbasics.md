@@ -113,3 +113,47 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mymongo
 ```
 
+To launch everything in the above file (including a default virtual network for this set of resources):
+`docker compose -f demo.yaml up`
+
+To shut down everything in the above file (including removing the virtual network that was created with `up`):
+`docker compose -f demo.yaml down`
+
+
+### Building A Docker Image
+This is where you will use a continuous integration tool like Jenkins.  Once your app is commited in git, Jenkins will take the application and package it as a Docker image and upload/push it to a Docker image repository.
+
+#### Docker File
+A Docker file is the blueprint for building Docker images.  In other words, it consists of instructions to build a Docker image.  These files have an inheritance hierarchy and you specify what the base/parent image is at the top of the file.  A Docker file always has the name `Dockerfile` without any extensions.  Here is an example.
+```dockerfile
+# using node base image since our demo app is a node app
+FROM node:13-apline
+
+# environment variables are preferably set up in a
+# docker compose file but the following could also 
+# be done
+ENV MONGO_DB_USERNAME=admin \
+	MONGO_DB_PWD=password
+
+# this directory will be created inside of the container
+# i.e. the running container will have /home/app 
+RUN mkdir -p /home/app 
+
+# FYI, the RUN and ENV commands run INSIDE the container, not the host
+# But the COPY command below allows to copy stuff from host to guest
+# To do copying within the container, use 'RUN cp ...'
+
+# This means that this current Dockerfile needs to be at the root of your app directory.
+COPY . /home/app
+
+
+# Some 'entry point' command to be executed in the container at start
+# This maps to how you start a node application by saying "node server.js"
+# You can have only one CMD (entrypoint) line, but multiple RUN lines.
+CMD ["node", "server.,js"]
+
+```
+
+#### Building an image
+This is done using the `docker build` command:
+`docker build -t demo-app:1.0 .`

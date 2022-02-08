@@ -1,0 +1,818 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
+    
+    
+      
+        <title>Docker Basics - My Tech Journey</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d6be258b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Tech Journey" class="md-header__button md-logo" aria-label="My Tech Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Tech Journey
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Tech Journey" class="md-nav__button md-logo" aria-label="My Tech Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    My Tech Journey
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home - My Tech Journey
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Docker Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Docker Basics
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-vm-route" class="md-nav__link">
+    Linux VM Route
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-desktop-route" class="md-nav__link">
+    Docker Desktop Route
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion" class="md-nav__link">
+    Code Completion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicit-steps-to-creating-and-running-a-container" class="md-nav__link">
+    Explicit steps to creating and running a container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-step-to-running-a-container" class="md-nav__link">
+    One step to running a container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#looking-at-logs" class="md-nav__link">
+    Looking at logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-command-inside-including-bash-terminal" class="md-nav__link">
+    Running a command inside (including bash terminal)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-network" class="md-nav__link">
+    Docker Network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-simple-project" class="md-nav__link">
+    A Simple Project
+  </a>
+  
+    <nav class="md-nav" aria-label="A Simple Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-docker-plays-a-role" class="md-nav__link">
+    How Docker Plays a Role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-for-docker-compose" class="md-nav__link">
+    Case for Docker Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-docker-image" class="md-nav__link">
+    Building A Docker Image
+  </a>
+  
+    <nav class="md-nav" aria-label="Building A Docker Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-an-image-using-docker-commit" class="md-nav__link">
+    Building an image using docker commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-image-using-dockerfile" class="md-nav__link">
+    Building Image using Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#another-image-with-dockerfile" class="md-nav__link">
+    Another Image with Dockerfile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-vm-route" class="md-nav__link">
+    Linux VM Route
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-desktop-route" class="md-nav__link">
+    Docker Desktop Route
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion" class="md-nav__link">
+    Code Completion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicit-steps-to-creating-and-running-a-container" class="md-nav__link">
+    Explicit steps to creating and running a container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-step-to-running-a-container" class="md-nav__link">
+    One step to running a container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#looking-at-logs" class="md-nav__link">
+    Looking at logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-command-inside-including-bash-terminal" class="md-nav__link">
+    Running a command inside (including bash terminal)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-network" class="md-nav__link">
+    Docker Network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-simple-project" class="md-nav__link">
+    A Simple Project
+  </a>
+  
+    <nav class="md-nav" aria-label="A Simple Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-docker-plays-a-role" class="md-nav__link">
+    How Docker Plays a Role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-for-docker-compose" class="md-nav__link">
+    Case for Docker Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-docker-image" class="md-nav__link">
+    Building A Docker Image
+  </a>
+  
+    <nav class="md-nav" aria-label="Building A Docker Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-an-image-using-docker-commit" class="md-nav__link">
+    Building an image using docker commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-image-using-dockerfile" class="md-nav__link">
+    Building Image using Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#another-image-with-dockerfile" class="md-nav__link">
+    Another Image with Dockerfile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="docker-basics">Docker Basics<a class="headerlink" href="#docker-basics" title="Permanent link">&para;</a></h1>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>Docker daemon (Docker Engine) runs on Linux machines.  If you have a Mac or a PC, you will need to either use a Linux VM inside your Mac/PC, or download and install Docker Desktop. </p>
+<h3 id="linux-vm-route">Linux VM Route<a class="headerlink" href="#linux-vm-route" title="Permanent link">&para;</a></h3>
+<p>If you want to run Docker on your Mac/PC but not deal with Docker Desktop, then create a Linux VM, <a href="https://docs.docker.com/engine/install/debian/">install Docker using the local package manager</a>, and then figure a way to expose the VM ports so you can access them on your host machine.</p>
+<p>The best part about this route is that you are ONLY dealing with open source parts of the Docker universe.</p>
+<p>I have a Mac with  M1 Apple Silicon chip and unfortunately, most virtualization software available have issues with running VM's flawlessly (I tried QTM and Ubuntu Multipass).  As of right now, most of them have issues with networking.  A host restart messes up the networking setup more often than not.</p>
+<p>Another downside of this is that VS Code's docker remote plugin only seems to work if you are running Docker locally on the machine instead of a VM or a remote machine.</p>
+<h3 id="docker-desktop-route">Docker Desktop Route<a class="headerlink" href="#docker-desktop-route" title="Permanent link">&para;</a></h3>
+<p>Just go ahead and make a deal with the devil and download / install Docker desktop on your machine.  It just works.  Yes, there are licensing restrictions if you are a company with revenue over $10M.  At that point, I'm sure Docker's licensing won't be an issue for you.</p>
+<h3 id="code-completion">Code Completion<a class="headerlink" href="#code-completion" title="Permanent link">&para;</a></h3>
+<p>You can manage containers and images from the terminal by either specifying their unique alpanumeric ID's or their friendly names.  I prefer friendly names.  And if you enable code completion for docker, you can use <code>tab</code> key to auto-complete the names.  Completion was working from the start when I tried it on an Ubuntu machine.  On my Mac, I had to <a href="https://docs.docker.com/compose/completion/">follow these steps</a></p>
+<h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
+<h3 id="explicit-steps-to-creating-and-running-a-container">Explicit steps to creating and running a container<a class="headerlink" href="#explicit-steps-to-creating-and-running-a-container" title="Permanent link">&para;</a></h3>
+<p>Here are the explicit steps:
+1) Download the image using the <code>pull</code> command.  Without the version number, you get the latest version of the image.   This is an optional step because when you create a container, if you don't have the right image, Docker will download it for you. 
+    <code>docker pull redis:4.0</code> 
+2) Create a container based on that image.  This is where you can map the container ports to your host machine.<br />
+<code>docker create -p 6001:6379 --name redis-demo redis:4.0</code>
+3) Start the container.  Notice I am using the container name instead of it's universal ID.  In fact, I used auto complete in my terminal and didn't have to type the full name.
+    <code>docker start redis-older</code></p>
+<h3 id="one-step-to-running-a-container">One step to running a container<a class="headerlink" href="#one-step-to-running-a-container" title="Permanent link">&para;</a></h3>
+<p>Docker's <code>run</code> command will pull the image (latest version, unless specified) from Dockerhub, create a container based on that image, and then start it.  Many tutorials out there (in)conveniently forget to mention this when they say talk about the run comand and only the run command.  To do the explicit steps above all in one line:
+<code>docker run -dp 6001:6379 --name redis-demo redis:4.0</code>
+The -d command is for running in detached mode.  That is, the command will spin off the running of the container but then return so you can use that command line again.</p>
+<h3 id="looking-at-logs">Looking at logs<a class="headerlink" href="#looking-at-logs" title="Permanent link">&para;</a></h3>
+<p><code>docker logs redis-demo</code></p>
+<h3 id="running-a-command-inside-including-bash-terminal">Running a command inside (including bash terminal)<a class="headerlink" href="#running-a-command-inside-including-bash-terminal" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For running pwd (present working dir) command inside docker
+<code>docker exec -it redis-demo pwd</code></li>
+<li>For running an interactive bash terminal
+<code>docker exec -it redis-demo /bin/bash</code></li>
+</ul>
+<h3 id="docker-network">Docker Network<a class="headerlink" href="#docker-network" title="Permanent link">&para;</a></h3>
+<p>Docker allows for the creation of an isolated network that you can place your containers in.  This way they can talk to each other using the container names without having to expose specific ports through the host machine.  Docker comes with a default set of networks.  </p>
+<p>You can list existing networks using:
+<code>docker network ls</code></p>
+<p>You can create a new network using:
+<code>docker network create demo-network</code></p>
+<p>TODO: This section could be expanded...</p>
+<h2 id="a-simple-project">A Simple Project<a class="headerlink" href="#a-simple-project" title="Permanent link">&para;</a></h2>
+<h3 id="how-docker-plays-a-role">How Docker Plays a Role<a class="headerlink" href="#how-docker-plays-a-role" title="Permanent link">&para;</a></h3>
+<p>Let's say there is a simple dev workflow for building a JavaScript application that uses MongoDB as it's database.  Where would docker show up in this setup?
+1) On the dev machine, we could use a MongoDB container (and a MongoExpress container for a nice GUI to manage MongoDb).
+2) On the dev machine, we could use a Docker container as our development environtment and use VS Code and it's Docker Remote plugin to develop directly in the container.
+3) A code commit/push to a remote repository could trigger a Jenkins / Github Actions workflow that builds the JS app and pushes it to a private Docker repository.
+4) The staging server pulls and deploys the app's Docker image.
+5) The staging server pulls and deploys the MongoDB image from Docker Hub.</p>
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<p>1) Create Docker network: 
+<code>docker network create demo-network</code>
+2) Create a mongodb container with port 27017 exposed with a username and password using environment variables. 
+    <code>docker
+    docker run -dp 27017:27017 --name mymongo --network demo-network \
+    &gt; -e MONGO_INITDB_ROOT_USERNAME=admin \
+    &gt; -e MONGO_INITDB_ROOT_PASSWORD=password \
+    &gt; mongo</code>
+3) Create a mongo-express container with the right environtment variables so that it connects to the mongo instance
+    <code>docker
+    docker run -dp 8081:8081 \
+    &gt; -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+    &gt; -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+    &gt; --network demo-network \
+    &gt; --name mymongoexpress \
+    &gt; -e ME_CONFIG_MONGODB_SERVER=mymongo \
+    &gt; mongo-express</code></p>
+<h2 id="case-for-docker-compose">Case for Docker Compose<a class="headerlink" href="#case-for-docker-compose" title="Permanent link">&para;</a></h2>
+<p>Creating multiple related containers separately (like above) could get tedious and error prone.  And so, we have Docker Compose that makes it possible to configure and run multiple Docker containers much easier: Docker Compose.  With this tool you create a declarative yaml file that contains the parameters you would have specified in Docker run command in a structured way.</p>
+<p>Docker Compose by default takes care of creating a common network.</p>
+<p>Here is the yaml file describing the above two containers:</p>
+<pre><code class="language-yaml">version: '3'
+
+services:
+  mymongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+  mymongoexpress:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mymongo
+</code></pre>
+<p>To launch everything in the above file (including a default virtual network for this set of resources):
+<code>docker compose -f demo.yaml up</code></p>
+<p>To shut down everything in the above file (including removing the virtual network that was created with <code>up</code>):
+<code>docker compose -f demo.yaml down</code></p>
+<h2 id="building-a-docker-image">Building A Docker Image<a class="headerlink" href="#building-a-docker-image" title="Permanent link">&para;</a></h2>
+<p>This is where you will use a continuous integration tool like Jenkins.  Once your app is commited in git, Jenkins will take the application and package it as a Docker image and upload/push it to a Docker image repository.</p>
+<h3 id="building-an-image-using-docker-commit">Building an image using docker commit<a class="headerlink" href="#building-an-image-using-docker-commit" title="Permanent link">&para;</a></h3>
+<p>For this example, let's use Alpine Linux image since it's super compact.</p>
+<p>1) Download image: <code>docker pull alpine</code>
+2) Run a container instance from it: <code>docker run -it --name alpine-prime</code>
+3) Install git:
+    1) <code>apk fix</code>
+    2) <code>apk update</code>
+    3) <code>apk upgrade</code>
+    4) <code>apk add git</code>
+    5) <code>exit</code>
+4) Create image: <code>docker commit alpine-prime jazzwall/alpinegit:1.0</code>
+5) Push to Docker Hub (req auth): <code>docker push jazzwall/alpinegit:1.0</code></p>
+<h3 id="building-image-using-dockerfile">Building Image using Dockerfile<a class="headerlink" href="#building-image-using-dockerfile" title="Permanent link">&para;</a></h3>
+<p>The above individual commands can be placed in one Dockerfile instance.  Each RUN instruction creates a new image layer.  The output of the build command will show all the intermediate containers that were used to build this image. 
+1) Create a Docker file called Dockerfile (no extensions):</p>
+<pre><code class="language-dockerfile">FROM alpine
+
+RUN apk fix
+RUN apk update
+RUN apk upgrade
+RUN apk add git
+</code></pre>
+<p>2) Build the image: <code>docker build -t jazzwall/alpinegit:2.0</code>
+3) Push to Docker Hub: <code>docker push jazzwall/alpinegit:2.0</code>
+4) You could enhance this file by chaining the RUN instructions. This reduces the number of image layers and intermediate containers created and potentially a slightly smaller image:</p>
+<pre><code class="language-dockerfile">FROM alpine
+RUN apk fix &amp;&amp; \
+    apk update &amp;&amp; \
+    apk upgrade &amp;&amp; \
+    apk add git
+</code></pre>
+<p>5) Each RUN line inside Dockerfile creates a new image layer.   And these intermediate layer images are usually cached.  This can cause problems if you had an apt or apk update in one RUN line and apt or apk add/install in another line.  Since the update might be cached, it might not run before the add/install, causing issues.  Therefore, a best practice is to chain the update command with any package install/add commands... like in the above example.</p>
+<h3 id="another-image-with-dockerfile">Another Image with Dockerfile<a class="headerlink" href="#another-image-with-dockerfile" title="Permanent link">&para;</a></h3>
+<p>A Docker file is the blueprint for building Docker images.  In other words, it consists of instructions to build a Docker image.  These files have an inheritance hierarchy and you specify what the base/parent image is at the top of the file.  A Docker file always has the name <code>Dockerfile</code> without any extensions.  Here is an example.</p>
+<pre><code class="language-dockerfile"># using node base image since our demo app is a node app
+FROM node:13-apline
+
+# environment variables are preferably set up in a
+# docker compose file but the following could also 
+# be done
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PWD=password
+
+# this directory will be created inside of the container
+# i.e. the running container will have /home/app 
+RUN mkdir -p /home/app 
+
+# FYI, the RUN and ENV commands run INSIDE the container, not the host
+# But the COPY command below allows to copy stuff from host to guest
+# To do copying within the container, use 'RUN cp ...'
+
+# This means that this current Dockerfile needs to be at the root of your app directory.
+COPY . /home/app
+
+
+# Some 'entry point' command to be executed in the container at start
+# This maps to how you start a node application by saying &quot;node server.js&quot;
+# You can have only one CMD (entrypoint) line, but multiple RUN lines.
+CMD [&quot;node&quot;, &quot;/home/app/server.,js&quot;]
+
+</code></pre>
+<p>You then finally build the image:
+This is done using the <code>docker build</code> command:
+<code>docker build -t demo-app:1.0 .</code></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home - My Tech Journey" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home - My Tech Journey
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e3b2bf44.min.js"></script>
+      
+    
+  </body>
+</html>

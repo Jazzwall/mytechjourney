@@ -138,7 +138,7 @@ For this example, let's use Alpine Linux image since it's super compact.
 5) Push to Docker Hub (req auth): `docker push jazzwall/alpinegit:1.0`
 
 ### Building Image using Dockerfile
-The above individual commands can be placed in one Dockerfile instance.  Each line in this file will adds a new layer/image.  The output of the build command will show all the intermediate containers that were used to build this image. 
+The above individual commands can be placed in one Dockerfile instance.  Each RUN instruction creates a new image layer.  The output of the build command will show all the intermediate containers that were used to build this image. 
 1) Create a Docker file called Dockerfile (no extensions):
 ```dockerfile
 FROM alpine
@@ -150,7 +150,15 @@ RUN apk add git
 ```
 2) Build the image: `docker build -t jazzwall/alpinegit:2.0`
 3) Push to Docker Hub: `docker push jazzwall/alpinegit:2.0`
-
+4) You could enhance this file by chaining the RUN instructions. This reduces the number of image layers and intermediate containers created and potentially a slightly smaller image:
+```dockerfile
+FROM alpine
+RUN apk fix && \
+    apk update && \
+    apk upgrade && \
+    apk add git
+```
+5) Each RUN line inside Dockerfile creates a new image layer.   And these intermediate layer images are usually cached.  This can cause problems if you had an apt or apk update in one RUN line and apt or apk add/install in another line.  Since the update might be cached, it might not run before the add/install, causing issues.  Therefore, a best practice is to chain the update command with any package install/add commands... like in the above example.
 ### Another Image with Dockerfile
 A Docker file is the blueprint for building Docker images.  In other words, it consists of instructions to build a Docker image.  These files have an inheritance hierarchy and you specify what the base/parent image is at the top of the file.  A Docker file always has the name `Dockerfile` without any extensions.  Here is an example.
 ```dockerfile
